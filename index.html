@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShlokaSvara | Sacred Shlokas, Mantras &amp; Devotional Music</title>
+<meta name="description" content="Discover sacred shlokas, powerful mantras, soulful bhajans and peaceful devotional music with ShlokaSvara — Where Sound Meets Soul.">
+<meta property="og:title" content="ShlokaSvara | Sacred Shlokas, Mantras &amp; Devotional Music">
+<meta property="og:description" content="Discover sacred shlokas, powerful mantras, soulful bhajans and peaceful devotional music with ShlokaSvara — Where Sound Meets Soul.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/logo/shlokasvara-logo.png">
+<link rel="icon" href="images/logo/shlokasvara-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo" aria-label="ShlokaSvara Home">
+      <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara" class="logo-img">
+    </a>
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="index.html" class="nav-link is-active">Home</a>
+      <a href="listen.html" class="nav-link">Listen</a>
+      <a href="shlokas.html" class="nav-link">Shlokas</a>
+      <a href="mantras.html" class="nav-link">Mantras</a>
+      <a href="bhajans.html" class="nav-link">Bhajans</a>
+      <a href="meditation.html" class="nav-link">Meditation</a>
+      <a href="#about" class="nav-link">About</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="searchToggle" aria-label="Search" aria-haspopup="dialog" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <a href="listen.html" class="btn btn-gold header-cta">Listen Now</a>
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-dots" aria-hidden="true"></div>
+    <div class="hero-om" aria-hidden="true">ॐ</div>
+    <div class="hero-content" id="heroContent">
+      <div class="eyebrow eyebrow-center">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Devotional Music · Shlokas · Mantras</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h1 class="hero-title">
+        Where Ancient Wisdom<br>
+        <em>Meets the Power of Sound</em>
+      </h1>
+      <p class="hero-sub">Sacred shlokas, timeless mantras and soulful devotional music for moments of peace, reflection and connection.</p>
+      <div class="hero-ctas">
+        <a href="listen.html" class="btn btn-gold btn-lg">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Listen Now
+        </a>
+        <a href="shlokas.html" class="btn btn-outline btn-lg">
+          Explore Shlokas
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+      <div class="hero-waveform">
+        <div class="waveform" id="heroWaveform" aria-hidden="true"></div>
+        <span class="waveform-label">Now Playing on ShlokaSvara</span>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,90,.35)" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+    </div>
+  </section>
+
+  <!-- FEATURED MUSIC -->
+  <section id="listen" class="section section-dark">
+    <div class="section-header" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text gold">Featured</span>
+      </div>
+      <h2 class="section-title">Listen &amp; Connect</h2>
+      <p class="section-sub">Sacred sounds for every moment.</p>
+    </div>
+    <div class="music-grid" id="musicGrid"></div>
+  </section>
+
+  <!-- SACRED SHLOKAS -->
+  <section id="shlokas" class="section section-light">
+    <div class="section-header" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line eyebrow-line-dark"></span>
+        <span class="eyebrow-text deep">Sacred Verses</span>
+      </div>
+      <h2 class="section-title dark">Sacred Shlokas</h2>
+      <p class="section-sub dark">Timeless verses for reflection, devotion and everyday life.</p>
+    </div>
+    <div class="shloka-grid" id="shlokaGrid"></div>
+  </section>
+
+  <!-- MANTRAS -->
+  <section id="mantras" class="section section-midnight">
+    <div class="section-header" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text gold">Mantras</span>
+      </div>
+      <h2 class="section-title">Mantras for the Mind &amp; Soul</h2>
+      <p class="section-sub">Ancient syllables. Profound resonance.</p>
+      <div class="mantra-filters" id="mantraFilters" role="group" aria-label="Filter mantras by deity"></div>
+    </div>
+    <div class="mantra-grid" id="mantraGrid"></div>
+  </section>
+
+  <!-- DEVOTIONAL JOURNEYS -->
+  <section class="section section-deep">
+    <div class="section-header" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text gold">Curated Collections</span>
+      </div>
+      <h2 class="section-title">Devotional Journeys</h2>
+    </div>
+    <div class="journey-grid" id="journeyGrid"></div>
+  </section>
+
+  <!-- SHLOKA OF THE DAY -->
+  <section class="sotd-section">
+    <div class="sotd-inner" data-reveal>
+      <div class="sotd-label-row">
+        <span class="sotd-line"></span>
+        <span class="sotd-label">Shloka of the Day</span>
+        <span class="sotd-line"></span>
+      </div>
+      <div class="sotd-mark" aria-hidden="true">✦</div>
+      <div class="sotd-sanskrit" id="sotdSanskrit"></div>
+      <div class="sotd-divider">
+        <span class="sotd-divider-line"></span>
+        <span class="sotd-diamond" aria-hidden="true"></span>
+        <span class="sotd-divider-line"></span>
+      </div>
+      <div class="sotd-translit" id="sotdTranslit"></div>
+      <p class="sotd-meaning" id="sotdMeaning"></p>
+      <div class="sotd-actions">
+        <button type="button" class="btn btn-indigo" id="sotdPlayBtn" data-play="shloka-1">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Listen
+        </button>
+        <button type="button" class="btn btn-outline-deep" id="sotdSaveBtn" aria-pressed="false">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          Save
+        </button>
+        <button type="button" class="btn btn-outline-deep" id="sotdShareBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+          Share
+        </button>
+      </div>
+      <p class="sotd-footnote">Return tomorrow for another sacred verse.</p>
+    </div>
+  </section>
+
+  <!-- BHAJANS -->
+  <section id="bhajans" class="section section-dark">
+    <div class="section-header" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text gold">Bhajans</span>
+      </div>
+      <h2 class="section-title">Bhakti, in Every Note</h2>
+    </div>
+    <div class="bhajan-scroll" id="bhajanScroll"></div>
+  </section>
+
+  <!-- WHY SHLOKASVARA -->
+  <section class="section section-light">
+    <div class="section-header section-header-wide" data-reveal>
+      <div class="eyebrow">
+        <span class="eyebrow-line eyebrow-line-dark"></span>
+        <span class="eyebrow-text deep">Our Purpose</span>
+      </div>
+      <h2 class="section-title dark">More Than Music.<br><em class="muted-em">A Spiritual Experience.</em></h2>
+    </div>
+    <div class="why-grid" id="whyGrid"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-midnight about-section">
+    <div class="about-inner" data-reveal>
+      <div class="eyebrow eyebrow-center">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text gold">About</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h2 class="section-title about-title">About ShlokaSvara</h2>
+      <div class="about-copy">
+        <p>ShlokaSvara is a devotional music platform created to make India's timeless spiritual heritage accessible through sound.</p>
+        <p>From ancient Sanskrit shlokas and powerful mantras to soulful bhajans and peaceful meditation music, ShlokaSvara brings sacred traditions into a contemporary listening experience.</p>
+        <p>Our purpose is simple — to help people pause, listen, reflect and reconnect.</p>
+      </div>
+      <a href="about.html" class="btn btn-outline-gold">
+        Discover ShlokaSvara
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner" data-reveal>
+      <div class="newsletter-marks" aria-hidden="true">✦ ✦ ✦</div>
+      <h2 class="newsletter-title">Begin Your Daily Moment of Peace</h2>
+      <p class="newsletter-sub">Receive a shloka, mantra or devotional listening recommendation — delivered to your inbox each morning.</p>
+
+      <div class="newsletter-success" id="newsletterSuccess" hidden>
+        <div class="newsletter-success-mark" aria-hidden="true">✦</div>
+        <h3>You're joined.</h3>
+        <p>Your first shloka arrives tomorrow morning. Namaste.</p>
+      </div>
+
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required>
+        <button type="submit" class="btn btn-gold newsletter-submit">Join ShlokaSvara</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="player-spacer" id="playerSpacer"></div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara" class="footer-logo">
+      <p class="footer-tagline">Where Sound Meets Soul</p>
+      <p class="footer-desc">Sacred sounds, timeless wisdom and soulful devotional music for every heart.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="shlokas.html">Shlokas</a>
+      <a href="mantras.html">Mantras</a>
+      <a href="bhajans.html">Bhajans</a>
+      <a href="meditation.html">Meditation</a>
+      <a href="listen.html">Music</a>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="about.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://youtube.com/@shlokasvara" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#03040e"></polygon></svg>
+        YouTube
+      </a>
+      <a href="https://facebook.com/shlokasvara" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        Facebook
+      </a>
+      <a href="https://instagram.com/shlokasvara" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ShlokaSvara. All Rights Reserved.</p>
+    <p class="footer-bottom-tagline">Where Sound Meets Soul</p>
+  </div>
+</footer>
+
+<!-- ═══ MUSIC PLAYER (FIXED) ═══ -->
+<div class="player" id="musicPlayer" aria-label="Music player" role="complementary">
+  <div class="player-artwork" id="playerArtwork" aria-hidden="true">ॐ</div>
+  <div class="player-detail player-info">
+    <div class="player-title" id="playerTrackTitle">Select a track to begin</div>
+    <div class="player-artist" id="playerTrackArtist"></div>
+  </div>
+  <div class="player-center">
+    <div class="player-controls">
+      <button type="button" class="player-btn" id="playerPrev" aria-label="Previous">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+      </button>
+      <button type="button" class="player-play" id="playerToggle" aria-label="Play">
+        <svg id="playerIconPlay" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <svg id="playerIconPause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+      <button type="button" class="player-btn" id="playerNext" aria-label="Next">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+      </button>
+    </div>
+    <div class="player-detail player-progress-row">
+      <span class="player-time" id="playerCurrentTime">0:00</span>
+      <div class="player-progress-track" id="playerSeek">
+        <div class="player-progress-fill" id="playerProgressFill"></div>
+      </div>
+      <span class="player-time" id="playerDuration">0:00</span>
+    </div>
+    <p class="player-status" id="playerStatus" hidden>Demo audio unavailable</p>
+  </div>
+  <div class="player-detail player-volume">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(248,243,234,.4)" stroke-width="1.5" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+    <input type="range" min="0" max="100" value="75" id="playerVolume" aria-label="Volume">
+  </div>
+  <button type="button" class="player-close" id="playerClose" aria-label="Close player">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+</div>
+
+<!-- ═══ SEARCH OVERLAY ═══ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+  <div class="search-scrim" id="searchScrim"></div>
+  <div class="search-panel">
+    <div class="search-box">
+      <div class="search-input-row">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,90,.7)" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search shlokas, mantras, bhajans…" aria-label="Search">
+        <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="search-body">
+        <div id="searchSuggested">
+          <p class="search-label">Suggested</p>
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <div id="searchResultsWrap" hidden>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara" class="mobile-menu-logo">
+    <button type="button" class="icon-btn" id="mobileMenuClose" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="listen.html">Listen</a>
+    <a href="shlokas.html">Shlokas</a>
+    <a href="mantras.html">Mantras</a>
+    <a href="bhajans.html">Bhajans</a>
+    <a href="meditation.html">Meditation</a>
+    <a href="#about" class="mobile-nav-last">About</a>
+  </nav>
+  <div class="mobile-menu-cta">
+    <a href="listen.html" class="btn btn-gold btn-block">Listen Now</a>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/player.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

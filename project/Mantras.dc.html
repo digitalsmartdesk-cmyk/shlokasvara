@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#07091a;color:#f8f3ea;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#07091a;}
+::-webkit-scrollbar-thumb{background:rgba(201,164,90,.2);border-radius:2px;}
+@keyframes waveAnim{0%{transform:scaleY(.2);opacity:.4;}100%{transform:scaleY(1);opacity:1;}}
+@keyframes ripple{0%{transform:scale(1);opacity:.6;}100%{transform:scale(2.4);opacity:0;}}
+:root{--px:clamp(20px,5vw,88px);}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;padding:0 var(--px);height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,7,20,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,164,90,.08);">
+  <a href="ShlokaSvara Home.dc.html" aria-label="ShlokaSvara Home" style="display:flex;align-items:center;">
+    <img src="uploads/ChatGPT Image Mar 21, 2026, 10_18_00 PM.png" alt="ShlokaSvara" style="height:44px;width:auto;object-fit:contain;">
+  </a>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="Listen.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Listen</a>
+    <a href="Shlokas.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Shlokas</a>
+    <a href="Meditation.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Meditation</a>
+    <a href="About.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">About</a>
+  </nav>
+  <a href="ShlokaSvara Home.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:.75rem;color:rgba(248,243,234,.35);transition:color .2s;" style-hover="color:#c9a45a;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Home
+  </a>
+</header>
+
+<main style="padding-top:72px;min-height:100vh;">
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg,#0c0820 0%,#07091a 100%);padding:clamp(48px,8vh,88px) var(--px) clamp(40px,7vh,72px);border-bottom:1px solid rgba(201,164,90,.07);">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:center;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <div style="width:24px;height:1px;background:rgba(201,164,90,.4);"></div>
+        <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Ancient Syllables</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5.5vw,4rem);font-weight:600;color:#f8f3ea;margin-bottom:18px;line-height:1.1;">Mantras for the<br><em style="font-style:italic;color:#e8d4a4;">Mind &amp; Soul</em></h1>
+      <p style="font-size:1rem;color:rgba(248,243,234,.5);font-weight:300;max-width:500px;line-height:1.82;margin-bottom:32px;">Sacred syllables charged with the energy of millennia. Each mantra a doorway into deeper awareness, devotion and peace.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <sc-for list="{{ deityFilters }}" as="d" hint-placeholder-count="6">
+          <button onClick="{{ d.onSelect }}" style="{{ d.style }}">{{ d.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <!-- Om symbol -->
+    <div style="display:flex;align-items:center;justify-content:center;position:relative;">
+      <div style="position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(201,164,90,.1);animation:ripple 3s ease-out infinite;"></div>
+      <div style="position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid rgba(201,164,90,.06);animation:ripple 3s ease-out .8s infinite;"></div>
+      <div style="width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(201,164,90,.12),rgba(201,164,90,.02));border:1px solid rgba(201,164,90,.22);display:flex;align-items:center;justify-content:center;">
+        <span aria-hidden="true" style="font-family:'Noto Serif Devanagari',serif;font-size:5rem;color:rgba(201,164,90,.8);line-height:1;">ॐ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANTRAS GRID -->
+<section style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vh,72px) var(--px);">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:10px;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:#f8f3ea;">{{ sectionTitle }}</h2>
+    <span style="font-size:.78rem;color:rgba(248,243,234,.35);">{{ countLabel }}</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;">
+    <sc-for list="{{ mantras }}" as="m" hint-placeholder-count="8">
+      <div style="{{ m.cardStyle }}" style-hover="transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.45);border-color:rgba(201,164,90,.28);">
+        <div style="padding:28px 26px 24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <span style="{{ m.deityBadge }}">{{ m.deity }}</span>
+            <span style="font-size:.75rem;color:rgba(248,243,234,.28);font-variant-numeric:tabular-nums;">{{ m.duration }}</span>
+          </div>
+          <div style="font-family:'Noto Serif Devanagari',serif;font-size:clamp(1.1rem,2vw,1.3rem);color:rgba(248,243,234,.88);line-height:1.85;margin-bottom:14px;">{{ m.sanskrit }}</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#f8f3ea;margin-bottom:8px;line-height:1.3;">{{ m.title }}</h3>
+          <p style="font-size:.8rem;color:rgba(248,243,234,.4);line-height:1.7;margin-bottom:8px;">{{ m.description }}</p>
+          <p style="font-size:.78rem;color:rgba(248,243,234,.26);line-height:1.65;margin-bottom:22px;font-style:italic;border-left:1px solid rgba(201,164,90,.2);padding-left:12px;">{{ m.benefit }}</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button onClick="{{ m.play }}" style="{{ m.playBtnStyle }}" style-hover="transform:scale(1.06);">
+              <sc-if value="{{ m.isPlaying }}" hint-placeholder-val="{{ false }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </sc-if>
+              <sc-if value="{{ m.isNotPlaying }}" hint-placeholder-val="{{ true }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </sc-if>
+            </button>
+            <div style="flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
+              <div style="{{ m.progressStyle }}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CHANTING GUIDE BAND -->
+<section style="background:linear-gradient(135deg,#0d0520,#060915);border-top:1px solid rgba(201,164,90,.07);border-bottom:1px solid rgba(201,164,90,.07);padding:clamp(52px,7vh,80px) var(--px);">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:22px;height:1px;background:rgba(201,164,90,.4);"></div>
+        <span style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Practice</span>
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:#f8f3ea;line-height:1.15;margin-bottom:20px;">How to Chant<br><em>a Mantra</em></h2>
+      <p style="font-size:.9rem;color:rgba(248,243,234,.48);line-height:1.82;margin-bottom:36px;font-weight:300;">Mantra chanting is a sacred practice that works through vibration, intention, and repetition. Follow these simple guidelines to deepen your practice.</p>
+      <a href="Meditation.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#c9a45a,#9e7830);color:#07091a;padding:12px 28px;border-radius:100px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,164,90,.35);">Explore Meditation</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <sc-for list="{{ guideSteps }}" as="step" hint-placeholder-count="4">
+        <div style="display:flex;align-items:flex-start;gap:18px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,164,90,.1);border:1px solid rgba(201,164,90,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <span style="font-size:.75rem;font-weight:500;color:#c9a45a;font-variant-numeric:tabular-nums;">{{ step.num }}</span>
+          </div>
+          <div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#f8f3ea;margin-bottom:4px;">{{ step.title }}</h4>
+            <p style="font-size:.82rem;color:rgba(248,243,234,.42);line-height:1.7;">{{ step.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- MINI PLAYER -->
+<div style="{{ playerStyle }}" aria-label="Player" role="complementary">
+  <div style="font-size:.82rem;color:#f8f3ea;font-weight:500;min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ playerTitle }}</div>
+  <div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">
+    <button onClick="{{ togglePlay }}" style="width:40px;height:40px;border-radius:50%;background:#c9a45a;border:none;color:#07091a;display:flex;align-items:center;justify-content:center;transition:all .2s;" style-hover="transform:scale(1.06);">
+      <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ false }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </sc-if>
+      <sc-if value="{{ isNotPlaying }}" hint-placeholder-val="{{ true }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      </sc-if>
+    </button>
+    <button onClick="{{ closePlayer }}" style="background:none;border:none;color:rgba(248,243,234,.35);display:flex;align-items:center;padding:6px;transition:color .2s;" style-hover="color:rgba(248,243,234,.8);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+</div>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { activeDeity: 'All', isPlaying: false, currentTrackId: null, playerVisible: false, trackProgress: {} };
+
+  mantrasData = [
+    { id:1, title:'Om Namah Shivaya', deity:'Shiva', sanskrit:'ॐ नमः शिवाय', description:'The Panchakshara — the five sacred syllables dedicated to Lord Shiva.', benefit:'Purifies the mind, dissolves ego and connects to divine consciousness.', duration:'3:22', audio:'' },
+    { id:2, title:'Maha Mrityunjaya', deity:'Shiva', sanskrit:'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्', description:'The great Vedic mantra of victory over mortality and suffering.', benefit:'Strengthens vitality, heals illness and protects from fear.', duration:'4:15', audio:'' },
+    { id:3, title:'Gayatri Mantra', deity:'Meditation', sanskrit:'ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यम्', description:'The supreme Vedic mantra for divine wisdom and illumination.', benefit:'Sharpens intellect, dispels ignorance and invokes divine grace.', duration:'5:30', audio:'' },
+    { id:4, title:'Om Namo Narayanaya', deity:'Vishnu', sanskrit:'ॐ नमो नारायणाय', description:'The Ashtakshara — the eight sacred syllables of Lord Vishnu.', benefit:'Bestows peace, prosperity and liberation from the cycle of rebirth.', duration:'3:05', audio:'' },
+    { id:5, title:'Om Namo Bhagavate', deity:'Vishnu', sanskrit:'ॐ नमो भगवते वासुदेवाय', description:'The twelve-syllable mantra of surrender to the divine Vasudeva.', benefit:'Cultivates devotion, inner freedom and spiritual liberation.', duration:'4:40', audio:'' },
+    { id:6, title:'Om Mahalakshmyai', deity:'Shakti', sanskrit:'ॐ महालक्ष्म्यै नमः', description:'A sacred prayer to the divine goddess of abundance and grace.', benefit:'Invites prosperity, beauty and the blessings of divine grace.', duration:'2:55', audio:'' },
+    { id:7, title:'Durga Stuti', deity:'Shakti', sanskrit:'ॐ दुं दुर्गायै नमः', description:'An invocation to the fierce and compassionate Durga Mata.', benefit:'Destroys obstacles, grants courage and awakens inner strength.', duration:'5:12', audio:'' },
+    { id:8, title:'Hanuman Chalisa', deity:'Hanuman', sanskrit:'जय हनुमान ज्ञान गुण सागर', description:'Forty sacred verses of devotion to Lord Hanuman by Tulsidas.', benefit:'Removes fear, grants protection and instills unwavering courage.', duration:'8:30', audio:'' },
+    { id:9, title:'Vakratunda Mahakaya', deity:'Ganesh', sanskrit:'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः', description:'The sacred invocation of Lord Ganesha before all endeavors.', benefit:'Removes obstacles, bestows wisdom and blesses new beginnings.', duration:'2:30', audio:'' },
+    { id:10, title:'Om Gam Ganapataye', deity:'Ganesh', sanskrit:'ॐ गं गणपतये नमः', description:'A seed mantra for Lord Ganesha, packed with divine energy.', benefit:'Clears the path ahead and awakens inner intelligence.', duration:'3:10', audio:'' },
+  ];
+
+  guideStepsData = [
+    { num:'01', title:'Find a Still Place', desc:'Sit comfortably with your spine erect. Choose a quiet, dedicated space for your practice.' },
+    { num:'02', title:'Set an Intention', desc:'Before chanting, hold a clear intention in your heart — healing, peace, devotion or clarity.' },
+    { num:'03', title:'Breathe and Begin', desc:'Take three slow breaths. Begin chanting aloud or silently, letting each repetition flow naturally.' },
+    { num:'04', title:'108 Repetitions', desc:'The traditional count of 108 repetitions completes one full cycle of the mantra practice.' },
+  ];
+
+  audio = null;
+
+  componentDidMount() {
+    this.audio = new Audio();
+    this.audio.addEventListener('ended', () => this.setState({ isPlaying: false }));
+    this.audio.addEventListener('timeupdate', () => {
+      if (!this.audio.duration || !this.state.currentTrackId) return;
+      const progress = (this.audio.currentTime / this.audio.duration) * 100;
+      this.setState(s => ({ trackProgress: { ...s.trackProgress, [s.currentTrackId]: progress } }));
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.audio) { this.audio.pause(); this.audio.src = ''; }
+  }
+
+  playTrack = (m) => {
+    if (this.state.currentTrackId === m.id) {
+      if (this.state.isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+      else {
+        if (m.audio) this.audio.play().catch(() => {});
+        this.setState({ isPlaying: true });
+      }
+    } else {
+      if (this.audio) { this.audio.pause(); this.audio.src = m.audio || ''; }
+      if (m.audio) this.audio.play().catch(() => {});
+      this.setState({ currentTrackId: m.id, isPlaying: true, playerVisible: true });
+    }
+  };
+
+  togglePlay = () => {
+    if (!this.state.currentTrackId) return;
+    if (this.state.isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+    else {
+      if (this.audio) this.audio.play().catch(() => {});
+      this.setState({ isPlaying: true });
+    }
+  };
+
+  closePlayer = () => {
+    if (this.audio) this.audio.pause();
+    this.setState({ playerVisible: false, isPlaying: false, currentTrackId: null });
+  };
+
+  renderVals() {
+    const { activeDeity, isPlaying, currentTrackId, playerVisible, trackProgress } = this.state;
+    const deityColors = { Shiva:'#5b8dd9', Vishnu:'#5da070', Shakti:'#c44b88', Ganesh:'#e07a30', Hanuman:'#d47820', Meditation:'#8060c0' };
+    const deities = ['All', ...Array.from(new Set(this.mantrasData.map(m => m.deity)))];
+    const filtered = activeDeity === 'All' ? this.mantrasData : this.mantrasData.filter(m => m.deity === activeDeity);
+    const cardGrads = { Shiva:'linear-gradient(160deg,rgba(20,8,44,.9),rgba(5,7,20,.95))', Vishnu:'linear-gradient(160deg,rgba(6,22,14,.9),rgba(5,7,20,.95))', Shakti:'linear-gradient(160deg,rgba(36,5,24,.9),rgba(5,7,20,.95))', Ganesh:'linear-gradient(160deg,rgba(36,18,4,.9),rgba(5,7,20,.95))', Hanuman:'linear-gradient(160deg,rgba(38,16,2,.9),rgba(5,7,20,.95))', Meditation:'linear-gradient(160deg,rgba(22,14,44,.9),rgba(5,7,20,.95))' };
+
+    return {
+      deityFilters: deities.map(d => {
+        const active = d === activeDeity;
+        const cc = deityColors[d] || '#c9a45a';
+        return { label:d, onSelect: () => this.setState({ activeDeity:d }), style: { padding:'8px 20px', borderRadius:'100px', fontSize:'.78rem', cursor:'pointer', transition:'all .25s', border: active ? `1px solid ${cc}` : '1px solid rgba(255,255,255,.1)', background: active ? `${cc}18` : 'transparent', color: active ? cc : 'rgba(248,243,234,.5)', fontFamily:"'DM Sans',sans-serif" } };
+      }),
+      sectionTitle: activeDeity === 'All' ? 'All Mantras' : `${activeDeity} Mantras`,
+      countLabel: `${filtered.length} mantras`,
+      mantras: filtered.map(m => {
+        const cc = deityColors[m.deity] || '#c9a45a';
+        const playing = isPlaying && currentTrackId === m.id;
+        const progress = trackProgress[m.id] || 0;
+        return { ...m,
+          isPlaying: playing, isNotPlaying: !playing,
+          cardStyle: { borderRadius:'20px', background:cardGrads[m.deity]||'linear-gradient(160deg,rgba(15,10,30,.9),rgba(5,7,20,.95))', border:'1px solid rgba(201,164,90,.1)', transition:'transform .3s ease,box-shadow .3s ease,border-color .3s ease', cursor:'pointer' },
+          deityBadge: { display:'inline-block', padding:'3px 12px', borderRadius:'100px', fontSize:'.63rem', fontWeight:'500', letterSpacing:'.12em', textTransform:'uppercase', background:`${cc}18`, color:cc, border:`1px solid ${cc}30` },
+          playBtnStyle: { width:'44px', height:'44px', borderRadius:'50%', background: playing ? cc : `${cc}18`, border:`1px solid ${cc}40`, color: playing ? '#07091a' : cc, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:'0', transition:'all .25s' },
+          progressStyle: { height:'100%', width:`${progress}%`, background:`linear-gradient(to right,${cc},${cc}88)`, borderRadius:'2px', transition:'width .1s linear' },
+          play: () => this.playTrack(m),
+        };
+      }),
+      guideSteps: this.guideStepsData,
+      isPlaying, isNotPlaying: !isPlaying,
+      playerTitle: currentTrackId ? (this.mantrasData.find(m => m.id === currentTrackId) || {}).title || '' : '',
+      playerStyle: { position:'fixed', bottom:0, left:0, right:0, zIndex:200, height:'64px', background:'rgba(3,4,14,.97)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', borderTop:'1px solid rgba(201,164,90,.12)', transform: playerVisible ? 'translateY(0)' : 'translateY(100%)', transition:'transform .45s cubic-bezier(0.16,1,0.3,1)', display:'flex', alignItems:'center', padding:'0 clamp(16px,5vw,88px)', gap:'20px' },
+      togglePlay: this.togglePlay, closePlayer: this.closePlayer,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

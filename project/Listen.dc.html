@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#07091a;color:#f8f3ea;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+input,select{font-family:inherit;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:#07091a;}
+::-webkit-scrollbar-thumb{background:rgba(201,164,90,.2);border-radius:2px;}
+@keyframes waveAnim{0%{transform:scaleY(.2);opacity:.35;}100%{transform:scaleY(1);opacity:1;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+:root{--px:clamp(20px,5vw,88px);}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header data-header style="position:fixed;top:0;left:0;right:0;z-index:100;padding:0 var(--px);height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,7,20,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,164,90,.08);">
+  <a href="ShlokaSvara Home.dc.html" style="display:flex;align-items:center;gap:12px;" aria-label="ShlokaSvara Home">
+    <img src="uploads/ChatGPT Image Mar 21, 2026, 10_18_00 PM.png" alt="ShlokaSvara" style="height:44px;width:auto;object-fit:contain;">
+  </a>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="ShlokaSvara Home.dc.html#listen" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.55);transition:color .2s;" style-hover="color:#c9a45a;">Music</a>
+    <a href="Shlokas.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.55);transition:color .2s;" style-hover="color:#c9a45a;">Shlokas</a>
+    <a href="Mantras.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.55);transition:color .2s;" style-hover="color:#c9a45a;">Mantras</a>
+    <a href="Meditation.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(248,243,234,.55);transition:color .2s;" style-hover="color:#c9a45a;">Meditation</a>
+  </nav>
+  <a href="ShlokaSvara Home.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:.75rem;letter-spacing:.06em;color:rgba(248,243,234,.4);transition:color .2s;" style-hover="color:#c9a45a;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Home
+  </a>
+</header>
+
+<main style="padding-top:72px;min-height:100vh;">
+
+<!-- HERO PLAYER -->
+<section style="background:linear-gradient(180deg,#0a0d2a 0%,#07091a 100%);padding:clamp(40px,7vh,80px) var(--px) clamp(32px,5vh,60px);border-bottom:1px solid rgba(255,255,255,.05);">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div style="width:22px;height:1px;background:rgba(201,164,90,.45);"></div>
+        <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Now Playing</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;color:#f8f3ea;margin-bottom:8px;line-height:1.1;">{{ currentTitle }}</h1>
+      <p style="font-size:.9rem;color:rgba(248,243,234,.4);margin-bottom:28px;">{{ currentMeta }}</p>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:520px;">
+        <div onClick="{{ seekTo }}" style="width:100%;height:5px;background:rgba(255,255,255,.1);border-radius:3px;cursor:pointer;position:relative;overflow:visible;">
+          <div style="{{ progressStyle }}"></div>
+          <div style="{{ thumbStyle }}"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:.72rem;color:rgba(248,243,234,.35);font-variant-numeric:tabular-nums;">{{ currentTimeStr }}</span>
+          <div style="display:flex;align-items:center;gap:20px;">
+            <button onClick="{{ playPrev }}" aria-label="Previous" style="background:none;border:none;color:rgba(248,243,234,.5);display:flex;align-items:center;transition:color .2s;" style-hover="color:#f8f3ea;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+            </button>
+            <button onClick="{{ togglePlay }}" aria-label="{{ playPauseLabel }}" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c9a45a,#9e7830);border:none;color:#07091a;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;box-shadow:0 6px 24px rgba(201,164,90,.32);" style-hover="transform:scale(1.06);box-shadow:0 10px 32px rgba(201,164,90,.45);">
+              <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ false }}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </sc-if>
+              <sc-if value="{{ isNotPlaying }}" hint-placeholder-val="{{ true }}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </sc-if>
+            </button>
+            <button onClick="{{ playNext }}" aria-label="Next" style="background:none;border:none;color:rgba(248,243,234,.5);display:flex;align-items:center;transition:color .2s;" style-hover="color:#f8f3ea;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+            </button>
+          </div>
+          <span style="font-size:.72rem;color:rgba(248,243,234,.35);font-variant-numeric:tabular-nums;">{{ durationStr }}</span>
+        </div>
+      </div>
+    </div>
+    <!-- Vinyl art -->
+    <div style="{{ vinylStyle }}">
+      <div style="{{ vinylInnerStyle }}">
+        <div aria-hidden="true" style="font-family:'Noto Serif Devanagari',serif;font-size:2.4rem;color:rgba(201,164,90,.55);line-height:1;">ॐ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY TABS + CATALOG -->
+<section style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,64px) var(--px);">
+  <!-- Tabs -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.06);">
+    <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+      <button onClick="{{ tab.onSelect }}" style="{{ tab.style }}">{{ tab.label }}</button>
+    </sc-for>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
+      <button onClick="{{ toggleSortMenu }}" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:rgba(248,243,234,.55);padding:8px 16px;border-radius:100px;font-size:.75rem;letter-spacing:.06em;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="border-color:rgba(201,164,90,.35);color:#c9a45a;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        {{ sortLabel }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Track List -->
+  <div style="display:flex;flex-direction:column;gap:4px;">
+    <sc-for list="{{ tracks }}" as="track" hint-placeholder-count="8">
+      <div onClick="{{ track.onPlay }}" style="{{ track.rowStyle }}" style-hover="background:rgba(255,255,255,.05);">
+        <div style="width:32px;text-align:center;flex-shrink:0;">
+          <sc-if value="{{ track.isActive }}" hint-placeholder-val="{{ false }}">
+            <div style="{{ track.waveStyle }}">{{ track.wave }}</div>
+          </sc-if>
+          <sc-if value="{{ track.isNotActive }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:.75rem;color:rgba(248,243,234,.25);font-variant-numeric:tabular-nums;">{{ track.num }}</span>
+          </sc-if>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:0;">
+          <div style="{{ track.artStyle }}">
+            <span style="font-size:.8rem;color:rgba(201,164,90,.4);font-family:'Noto Serif Devanagari',serif;">ॐ</span>
+          </div>
+          <div style="min-width:0;">
+            <div style="{{ track.titleStyle }}">{{ track.title }}</div>
+            <div style="font-size:.75rem;color:rgba(248,243,234,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ track.artist }}</div>
+          </div>
+        </div>
+        <div style="flex-shrink:0;display:none;" data-track-category>
+          <span style="{{ track.catBadgeStyle }}">{{ track.category }}</span>
+        </div>
+        <div style="flex-shrink:0;">
+          <span style="font-size:.78rem;color:rgba(248,243,234,.3);font-variant-numeric:tabular-nums;">{{ track.duration }}</span>
+        </div>
+        <button onClick="{{ track.toggleSave }}" aria-label="Save" style="background:none;border:none;color:{{ track.savedColor }};display:flex;align-items:center;padding:6px;opacity:0.7;transition:all .2s;" style-hover="opacity:1;color:#c9a45a;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ track.savedFill }}" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTIONS -->
+<section style="padding:clamp(40px,6vh,64px) var(--px) clamp(60px,8vh,100px);border-top:1px solid rgba(255,255,255,.05);background:#06081d;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:36px;">
+      <span style="font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Collections</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:#f8f3ea;margin-top:8px;">Curated for You</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;">
+      <sc-for list="{{ collections }}" as="col" hint-placeholder-count="6">
+        <div style="{{ col.cardStyle }}" style-hover="transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,.5);">
+          <div style="padding:28px 24px 24px;">
+            <div style="font-size:.63rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,164,90,.65);margin-bottom:auto;padding-bottom:32px;">{{ col.meta }}</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#f8f3ea;margin-bottom:6px;">{{ col.title }}</h3>
+            <p style="font-size:.78rem;color:rgba(248,243,234,.4);margin-bottom:20px;font-style:italic;">{{ col.desc }}</p>
+            <button onClick="{{ col.play }}" style="display:inline-flex;align-items:center;gap:7px;background:rgba(201,164,90,.1);border:1px solid rgba(201,164,90,.28);color:#c9a45a;padding:7px 16px;border-radius:100px;font-size:.73rem;letter-spacing:.06em;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="background:rgba(201,164,90,.2);border-color:#c9a45a;">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Play All
+            </button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    isPlaying: false, currentTrack: null, progress: 0, currentTime: 0,
+    duration: 0, activeTab: 'All', sortDir: 'asc', saved: {},
+  };
+
+  allTracks = [
+    { id:1, title:'Gayatri Mantra', artist:'ShlokaSvara', category:'Mantras', duration:'5:30', gradient:'linear-gradient(135deg,#1a1a40,#0a0a20)', audio:'' },
+    { id:2, title:'Om Namah Shivaya', artist:'ShlokaSvara', category:'Mantras', duration:'3:22', gradient:'linear-gradient(135deg,#250a50,#120520)', audio:'' },
+    { id:3, title:'Hanuman Chalisa', artist:'ShlokaSvara', category:'Bhajans', duration:'8:30', gradient:'linear-gradient(135deg,#3a1805,#1a0802)', audio:'' },
+    { id:4, title:'Morning Devotion', artist:'ShlokaSvara', category:'Music', duration:'32:00', gradient:'linear-gradient(135deg,#5a3000,#200e00)', audio:'' },
+    { id:5, title:'Maha Mrityunjaya', artist:'ShlokaSvara', category:'Mantras', duration:'4:15', gradient:'linear-gradient(135deg,#0d2040,#030a18)', audio:'' },
+    { id:6, title:'Vakratunda Mahakaya', artist:'ShlokaSvara', category:'Shlokas', duration:'2:30', gradient:'linear-gradient(135deg,#302010,#100800)', audio:'' },
+    { id:7, title:'Peace & Meditation', artist:'ShlokaSvara', category:'Music', duration:'45:00', gradient:'linear-gradient(135deg,#0a1628,#030810)', audio:'' },
+    { id:8, title:'Durga Stuti', artist:'ShlokaSvara', category:'Bhajans', duration:'5:12', gradient:'linear-gradient(135deg,#200520,#090209)', audio:'' },
+    { id:9, title:'Achyutam Keshavam', artist:'ShlokaSvara', category:'Bhajans', duration:'6:15', gradient:'linear-gradient(135deg,#0a1a35,#030810)', audio:'' },
+    { id:10, title:'Om Namo Narayanaya', artist:'ShlokaSvara', category:'Mantras', duration:'3:05', gradient:'linear-gradient(135deg,#082018,#020a06)', audio:'' },
+    { id:11, title:'Sarve Bhavantu Sukhinah', artist:'ShlokaSvara', category:'Shlokas', duration:'4:40', gradient:'linear-gradient(135deg,#1a0f30,#080413)', audio:'' },
+    { id:12, title:'Evening Bhakti', artist:'ShlokaSvara', category:'Music', duration:'38:00', gradient:'linear-gradient(135deg,#4a1200,#150500)', audio:'' },
+    { id:13, title:'Raghupati Raghava', artist:'ShlokaSvara', category:'Bhajans', duration:'3:55', gradient:'linear-gradient(135deg,#1a0a02,#080400)', audio:'' },
+    { id:14, title:'Karaagre Vasate', artist:'ShlokaSvara', category:'Shlokas', duration:'2:10', gradient:'linear-gradient(135deg,#102810,#040e04)', audio:'' },
+    { id:15, title:'Sleep & Relaxation', artist:'ShlokaSvara', category:'Meditation', duration:'60:00', gradient:'linear-gradient(135deg,#0f1848,#030510)', audio:'' },
+    { id:16, title:'Guru Stotram', artist:'ShlokaSvara', category:'Shlokas', duration:'3:15', gradient:'linear-gradient(135deg,#201808,#080600)', audio:'' },
+  ];
+
+  collectionsData = [
+    { id:1, title:'Morning Rituals', desc:'Start with sacred intention', tracks:6, duration:'42 min', bg:'linear-gradient(160deg,#1a1000,#050310)' },
+    { id:2, title:'Shiva Sadhana', desc:'Deep Shiva devotion', tracks:8, duration:'55 min', bg:'linear-gradient(160deg,#0d0520,#030210)' },
+    { id:3, title:'Sleep Sanctuary', desc:'Peaceful drift into rest', tracks:5, duration:'64 min', bg:'linear-gradient(160deg,#020e20,#030408)' },
+    { id:4, title:'Shakti Awakening', desc:'Invoke the divine feminine', tracks:7, duration:'48 min', bg:'linear-gradient(160deg,#200520,#090209)' },
+    { id:5, title:'Vedic Chants', desc:'Ancient Vedic tradition', tracks:9, duration:'61 min', bg:'linear-gradient(160deg,#151000,#060508)' },
+    { id:6, title:'Evening Gratitude', desc:'Close the day in devotion', tracks:6, duration:'38 min', bg:'linear-gradient(160deg,#120600,#060306)' },
+  ];
+
+  audio = null;
+
+  componentDidMount() {
+    this.audio = new Audio();
+    this.audio.addEventListener('timeupdate', () => {
+      if (!this.audio.duration) return;
+      this.setState({ progress: (this.audio.currentTime / this.audio.duration) * 100, currentTime: this.audio.currentTime, duration: this.audio.duration });
+    });
+    this.audio.addEventListener('ended', () => this.setState({ isPlaying: false }));
+    this.audio.addEventListener('loadedmetadata', () => this.setState({ duration: this.audio.duration }));
+
+    // Track category badge visibility
+    const setupCatBadges = () => {
+      document.querySelectorAll('[data-track-category]').forEach(el => {
+        el.style.display = window.innerWidth > 700 ? 'flex' : 'none';
+      });
+    };
+    setupCatBadges();
+    window.addEventListener('resize', setupCatBadges);
+  }
+
+  componentWillUnmount() {
+    if (this.audio) { this.audio.pause(); this.audio.src = ''; }
+  }
+
+  playTrack = (track) => {
+    const { currentTrack, isPlaying } = this.state;
+    if (currentTrack && currentTrack.id === track.id) {
+      if (isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+      else {
+        if (track.audio && this.audio) this.audio.play().catch(() => {});
+        this.setState({ isPlaying: true });
+      }
+    } else {
+      if (this.audio) { this.audio.pause(); this.audio.src = track.audio || ''; }
+      if (track.audio && this.audio) this.audio.play().catch(() => {});
+      this.setState({ currentTrack: track, isPlaying: true, progress: 0, currentTime: 0 });
+    }
+  };
+
+  togglePlay = () => {
+    const { currentTrack, isPlaying } = this.state;
+    if (!currentTrack) { if (this.allTracks.length) this.playTrack(this.allTracks[0]); return; }
+    if (isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+    else {
+      if (this.audio && currentTrack.audio) this.audio.play().catch(() => {});
+      this.setState({ isPlaying: true });
+    }
+  };
+
+  playPrev = () => {
+    const { currentTrack } = this.state;
+    const list = this.getFilteredTracks();
+    if (!currentTrack) { this.playTrack(list[0]); return; }
+    const idx = list.findIndex(t => t.id === currentTrack.id);
+    if (idx > 0) this.playTrack(list[idx - 1]);
+  };
+
+  playNext = () => {
+    const { currentTrack } = this.state;
+    const list = this.getFilteredTracks();
+    if (!currentTrack) { this.playTrack(list[0]); return; }
+    const idx = list.findIndex(t => t.id === currentTrack.id);
+    if (idx < list.length - 1) this.playTrack(list[idx + 1]);
+  };
+
+  seekTo = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    if (this.audio && this.audio.duration) this.audio.currentTime = ratio * this.audio.duration;
+    this.setState({ progress: ratio * 100 });
+  };
+
+  toggleSave = (id, e) => {
+    e.stopPropagation();
+    this.setState(s => ({ saved: { ...s.saved, [id]: !s.saved[id] } }));
+  };
+
+  toggleSortMenu = () => {
+    this.setState(s => ({ sortDir: s.sortDir === 'asc' ? 'desc' : 'asc' }));
+  };
+
+  getFilteredTracks() {
+    const { activeTab } = this.state;
+    return activeTab === 'All' ? this.allTracks : this.allTracks.filter(t => t.category === activeTab);
+  }
+
+  formatTime = (secs) => {
+    if (!secs || isNaN(secs)) return '0:00';
+    const m = Math.floor(secs / 60), s = Math.floor(secs % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  renderVals() {
+    const { isPlaying, currentTrack, progress, currentTime, duration, activeTab, sortDir, saved } = this.state;
+    const catColors = { Mantras:'#5b8dd9', Bhajans:'#c44b88', Music:'#c9a45a', Shlokas:'#5da070', Meditation:'#8060c0' };
+    const filteredTracks = this.getFilteredTracks();
+    const sorted = sortDir === 'asc' ? filteredTracks : [...filteredTracks].reverse();
+
+    const waveEl = (active) => active ? React.createElement('div', { style: { display:'flex', alignItems:'flex-end', gap:'2px', height:'18px' } },
+      [.7,.4,.9,.5,.8].map((h,i) => React.createElement('div', { key:i, style: { width:'2.5px', height:`${h*14+3}px`, background:'#c9a45a', borderRadius:'2px', animation:`waveAnim 1.${i+2}s ease-in-out ${i*.1}s infinite alternate`, transformOrigin:'bottom' } }))
+    ) : null;
+
+    const vinylRotating = isPlaying ? 'rotate(360deg)' : 'rotate(0deg)';
+
+    return {
+      currentTitle: currentTrack ? currentTrack.title : 'ShlokaSvara',
+      currentMeta: currentTrack ? `${currentTrack.category} · ${currentTrack.duration}` : 'Select a track to begin your devotional journey',
+      isPlaying, isNotPlaying: !isPlaying,
+      playPauseLabel: isPlaying ? 'Pause' : 'Play',
+      currentTimeStr: this.formatTime(currentTime),
+      durationStr: this.formatTime(duration || 0),
+      progress,
+      progressStyle: { position:'absolute', left:0, top:0, height:'100%', width:`${progress}%`, background:'linear-gradient(to right,#c9a45a,#e8c870)', borderRadius:'3px', transition:'width .1s linear', pointerEvents:'none' },
+      thumbStyle: { position:'absolute', top:'50%', left:`${progress}%`, transform:'translate(-50%,-50%)', width:'14px', height:'14px', borderRadius:'50%', background:'#c9a45a', boxShadow:'0 0 8px rgba(201,164,90,.5)', pointerEvents:'none', opacity: currentTrack ? 1 : 0 },
+      togglePlay: this.togglePlay, playPrev: this.playPrev, playNext: this.playNext, seekTo: this.seekTo,
+
+      vinylStyle: { width:'180px', height:'180px', borderRadius:'50%', background: currentTrack ? currentTrack.gradient : 'linear-gradient(135deg,#1a1a40,#0a0a20)', border:'2px solid rgba(201,164,90,.15)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, animation: isPlaying ? 'spin 8s linear infinite' : 'none', boxShadow:'0 20px 50px rgba(0,0,0,.4)' },
+      vinylInnerStyle: { width:'60px', height:'60px', borderRadius:'50%', background:'rgba(5,7,20,.9)', border:'1px solid rgba(201,164,90,.2)', display:'flex', alignItems:'center', justifyContent:'center' },
+
+      tabs: ['All','Music','Mantras','Shlokas','Bhajans','Meditation'].map(t => {
+        const active = t === activeTab;
+        return { label:t, onSelect: () => this.setState({ activeTab:t }), style: { padding:'8px 20px', borderRadius:'100px', fontSize:'.78rem', fontWeight:active?'500':'400', letterSpacing:'.05em', cursor:'pointer', transition:'all .25s', border: active ? '1px solid #c9a45a' : '1px solid rgba(255,255,255,.08)', background: active ? 'rgba(201,164,90,.12)' : 'transparent', color: active ? '#c9a45a' : 'rgba(248,243,234,.5)', fontFamily:"'DM Sans',sans-serif" } };
+      }),
+      sortLabel: sortDir === 'asc' ? 'A – Z' : 'Z – A',
+      toggleSortMenu: this.toggleSortMenu,
+
+      tracks: sorted.map((t, i) => {
+        const active = currentTrack && currentTrack.id === t.id;
+        const isSaved = !!saved[t.id];
+        const cc = catColors[t.category] || '#c9a45a';
+        return {
+          ...t, num: i + 1, isActive: active, isNotActive: !active,
+          onPlay: () => this.playTrack(t),
+          toggleSave: (e) => this.toggleSave(t.id, e),
+          rowStyle: { display:'flex', alignItems:'center', gap:'16px', padding:'11px 14px', borderRadius:'10px', cursor:'pointer', transition:'background .15s', background: active ? 'rgba(201,164,90,.07)' : 'transparent', border: active ? '1px solid rgba(201,164,90,.14)' : '1px solid transparent' },
+          artStyle: { width:'44px', height:'44px', borderRadius:'8px', background:t.gradient, flexShrink:0, display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' },
+          titleStyle: { fontSize:'.875rem', color: active ? '#c9a45a' : '#f8f3ea', fontWeight: active ? '500' : '400', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis', maxWidth:'260px' },
+          catBadgeStyle: { display:'inline-block', padding:'2px 10px', borderRadius:'100px', fontSize:'.63rem', fontWeight:'500', letterSpacing:'.1em', textTransform:'uppercase', background:`${cc}18`, color:cc, border:`1px solid ${cc}35` },
+          savedColor: isSaved ? '#c9a45a' : 'rgba(248,243,234,.35)',
+          savedFill: isSaved ? '#c9a45a' : 'none',
+          waveStyle: { display:'flex', alignItems:'center', justifyContent:'center', height:'18px' },
+          wave: isPlaying && active ? waveEl(true) : React.createElement('svg', { width:14, height:14, viewBox:'0 0 24 24', fill:'currentColor', style:{color:'#c9a45a'} }, React.createElement('polygon', { points:'5 3 19 12 5 21 5 3' })),
+        };
+      }),
+
+      collections: this.collectionsData.map(c => ({
+        ...c, meta: `${c.tracks} tracks · ${c.duration}`,
+        cardStyle: { borderRadius:'16px', background:c.bg, border:'1px solid rgba(201,164,90,.1)', transition:'transform .3s ease,box-shadow .3s ease', cursor:'pointer', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'220px' },
+        play: () => { if (this.allTracks.length) this.playTrack(this.allTracks[0]); },
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* ==========================================================================
+   ShlokaSvara — Responsive breakpoints
+   Desktop: 1440px+ / Tablet: 768–1199px / Mobile: below 768px
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  :root {
+    --col-shloka: 2;
+    --col-mantra: 3;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --col-music: 2;
+    --col-shloka: 2;
+    --col-mantra: 2;
+    --col-journey: 2;
+    --col-feature: 2;
+  }
+
+  .nav-desktop,
+  .header-cta {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --col-music: 1;
+    --col-shloka: 1;
+    --col-mantra: 1;
+    --col-journey: 1;
+    --col-feature: 1;
+  }
+
+  .player-detail {
+    display: none !important;
+  }
+
+  .player {
+    gap: 14px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sotd-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sotd-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#f8f3ea;color:#0f1335;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#f0ead8;}
+::-webkit-scrollbar-thumb{background:rgba(158,120,48,.25);border-radius:2px;}
+@keyframes waveAnim{0%{transform:scaleY(.2);}100%{transform:scaleY(1);}}
+:root{--px:clamp(20px,5vw,88px);}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;padding:0 var(--px);height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,243,234,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(158,120,48,.12);">
+  <a href="ShlokaSvara Home.dc.html" aria-label="ShlokaSvara Home" style="display:flex;align-items:center;">
+    <img src="uploads/ChatGPT Image Mar 21, 2026, 10_18_00 PM.png" alt="ShlokaSvara" style="height:44px;width:auto;object-fit:contain;">
+  </a>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="Listen.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(15,19,53,.5);transition:color .2s;" style-hover="color:#9e7830;">Listen</a>
+    <a href="Mantras.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(15,19,53,.5);transition:color .2s;" style-hover="color:#9e7830;">Mantras</a>
+    <a href="Meditation.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(15,19,53,.5);transition:color .2s;" style-hover="color:#9e7830;">Meditation</a>
+    <a href="About.dc.html" style="font-size:.82rem;letter-spacing:.04em;color:rgba(15,19,53,.5);transition:color .2s;" style-hover="color:#9e7830;">About</a>
+  </nav>
+  <a href="ShlokaSvara Home.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:.75rem;color:rgba(15,19,53,.35);transition:color .2s;" style-hover="color:#9e7830;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Home
+  </a>
+</header>
+
+<main style="padding-top:72px;min-height:100vh;">
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg,#ede7d5 0%,#f8f3ea 100%);padding:clamp(48px,8vh,88px) var(--px) clamp(40px,7vh,72px);text-align:center;border-bottom:1px solid rgba(158,120,48,.1);">
+  <div style="max-width:680px;margin:0 auto;">
+    <div aria-hidden="true" style="font-size:2.6rem;color:rgba(158,120,48,.25);font-family:'Noto Serif Devanagari',serif;margin-bottom:20px;line-height:1;">ॐ</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+      <div style="width:28px;height:1px;background:rgba(158,120,48,.3);"></div>
+      <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#9e7830;">Sacred Verses</span>
+      <div style="width:28px;height:1px;background:rgba(158,120,48,.3);"></div>
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5.5vw,4rem);font-weight:600;color:#0f1335;margin-bottom:16px;line-height:1.12;">Sacred Shlokas</h1>
+    <p style="font-size:1rem;color:rgba(15,19,53,.52);font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.8;">Timeless Sanskrit verses — their words, meanings and devotional sound, all in one place.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
+        <button onClick="{{ cat.onSelect }}" style="{{ cat.style }}">{{ cat.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SHLOKA GRID -->
+<section style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,64px) var(--px);">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#0f1335;">{{ sectionTitle }}</h2>
+    <span style="font-size:.8rem;color:rgba(15,19,53,.4);">{{ countLabel }}</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;">
+    <sc-for list="{{ shlokas }}" as="s" hint-placeholder-count="6">
+      <article style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 2px 18px rgba(15,19,53,.06);border:1px solid rgba(201,164,90,.12);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,19,53,.11);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(201,164,90,.12);">
+          <span style="{{ s.catStyle }}">{{ s.category }}</span>
+          <button aria-label="{{ s.saveLabel }}" onClick="{{ s.toggleSave }}" style="background:none;border:none;color:{{ s.savedColor }};display:flex;align-items:center;transition:color .2s;" style-hover="color:#c9a45a;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="{{ s.savedFill }}" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+        </div>
+        <div style="font-family:'Noto Serif Devanagari',serif;font-size:clamp(.95rem,1.8vw,1.15rem);color:#0f1335;line-height:2.1;margin-bottom:18px;white-space:pre-line;">{{ s.sanskrit }}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92rem;color:#9e7830;letter-spacing:.04em;margin-bottom:12px;">{{ s.transliteration }}</div>
+        <p style="font-size:.82rem;color:rgba(15,19,53,.52);line-height:1.78;margin-bottom:24px;border-left:2px solid rgba(201,164,90,.25);padding-left:14px;">{{ s.meaning }}</p>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button onClick="{{ s.play }}" style="display:inline-flex;align-items:center;gap:8px;background:#0f1335;color:#c9a45a;border:none;padding:9px 20px;border-radius:100px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="background:#1a2060;box-shadow:0 6px 20px rgba(15,19,53,.2);">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Listen
+          </button>
+          <button onClick="{{ s.share }}" style="display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(201,164,90,.28);color:#9e7830;padding:9px 18px;border-radius:100px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="border-color:#c9a45a;color:#c9a45a;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Share
+          </button>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<!-- SHLOKA OF THE DAY BAND -->
+<section style="background:#0f1335;padding:clamp(56px,8vh,88px) var(--px);text-align:center;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div aria-hidden="true" style="font-size:.85rem;color:rgba(201,164,90,.35);letter-spacing:.6em;margin-bottom:28px;">✦ ✦ ✦</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+      <div style="width:24px;height:1px;background:rgba(201,164,90,.35);"></div>
+      <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Shloka of the Day</span>
+      <div style="width:24px;height:1px;background:rgba(201,164,90,.35);"></div>
+    </div>
+    <div style="font-family:'Noto Serif Devanagari',serif;font-size:clamp(1.4rem,3vw,2rem);color:#f8f3ea;line-height:2;margin-bottom:24px;white-space:pre-line;">{{ sotdSanskrit }}</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#c9a45a;font-size:1.1rem;margin-bottom:16px;">{{ sotdTranslit }}</div>
+    <p style="font-size:.9rem;color:rgba(248,243,234,.48);line-height:1.8;max-width:520px;margin:0 auto 36px;">{{ sotdMeaning }}</p>
+    <button onClick="{{ playSOTD }}" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#c9a45a,#9e7830);color:#07091a;border:none;padding:13px 32px;border-radius:100px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all .25s;" style-hover="transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,164,90,.38);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      Listen to Today's Shloka
+    </button>
+  </div>
+</section>
+
+<!-- MINI PLAYER -->
+<div style="{{ playerStyle }}" aria-label="Player" role="complementary">
+  <div style="font-size:.82rem;color:#f8f3ea;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ playerTitle }}</div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <button onClick="{{ togglePlay }}" style="width:40px;height:40px;border-radius:50%;background:#c9a45a;border:none;color:#07091a;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;" style-hover="transform:scale(1.06);">
+      <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ false }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </sc-if>
+      <sc-if value="{{ isNotPlaying }}" hint-placeholder-val="{{ true }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      </sc-if>
+    </button>
+    <button onClick="{{ closePlayer }}" style="background:none;border:none;color:rgba(248,243,234,.4);display:flex;align-items:center;padding:6px;transition:color .2s;" style-hover="color:rgba(248,243,234,.9);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+</div>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { activeCategory: 'All', saved: {}, isPlaying: false, currentTrack: null, playerVisible: false };
+
+  shlokaData = [
+    { id:1, title:'Ganesh Shloka', sanskrit:'वक्रतुण्ड महाकाय\nसूर्यकोटि समप्रभः\nनिर्विघ्नं कुरु मे देव\nशुभकार्येषु सर्वदा॥', transliteration:'Vakratunda Mahakaya Suryakoti Samaprabha', meaning:'A prayer to Lord Ganesha, the elephant-headed deity, asking for his divine blessings to remove all obstacles from auspicious undertakings.', category:'Ganesh', audio:'' },
+    { id:2, title:'Gayatri Mantra', sanskrit:'ॐ भूर्भुवः स्वः\nतत्सवितुर्वरेण्यं\nभर्गो देवस्य धीमहि\nधियो यो नः प्रचोदयात्॥', transliteration:'Om Bhur Bhuva Svaha, Tat Savitur Varenyam', meaning:'The most revered Vedic mantra, a prayer to the divine solar energy to illuminate our intellect and awaken our consciousness.', category:'Vedic', audio:'' },
+    { id:3, title:'Karaagre Vasate Lakshmi', sanskrit:'कराग्रे वसते लक्ष्मी\nकरमध्ये सरस्वती\nकरमूले तु गोविन्दः\nप्रभाते करदर्शनम्॥', transliteration:'Karaagre Vasate Lakshmi, Karamadhye Saraswati', meaning:'A morning prayer acknowledging the presence of Lakshmi at the fingertips, Saraswati in the palm, and Govinda at the base of the hand.', category:'Morning', audio:'' },
+    { id:4, title:'Guru Stotram', sanskrit:'गुरुर्ब्रह्मा गुरुर्विष्णुः\nगुरुर्देवो महेश्वरः\nगुरुः साक्षात् परं ब्रह्म\nतस्मै श्री गुरवे नमः॥', transliteration:'Gurur Brahma Gurur Vishnu, Gurur Devo Maheshwara', meaning:'A verse of profound reverence to the Guru, who is revered as the embodiment of the divine Trinity — Brahma the creator, Vishnu the sustainer, and Shiva the transformer.', category:'Guru', audio:'' },
+    { id:5, title:'Sarve Bhavantu Sukhinah', sanskrit:'सर्वे भवन्तु सुखिनः\nसर्वे सन्तु निरामयाः\nसर्वे भद्राणि पश्यन्तु\nमा कश्चित् दुःखभाग्भवेत्॥', transliteration:'Sarve Bhavantu Sukhinah, Sarve Santu Niramayah', meaning:'A universal prayer for the well-being of all beings — may all be happy, may all be free from illness, and may none experience suffering.', category:'Universal', audio:'' },
+    { id:6, title:'Asato Ma Sadgamaya', sanskrit:'असतो मा सद्गमय\nतमसो मा ज्योतिर्गमय\nमृत्योर्मा अमृतं गमय\nॐ शान्तिः शान्तिः शान्तिः॥', transliteration:'Asato Ma Sad Gamaya, Tamaso Ma Jyotir Gamaya', meaning:'Lead me from the unreal to the real, from darkness to light, from mortality to immortality. A profound Vedic invocation of the Brihadaranyaka Upanishad.', category:'Vedic', audio:'' },
+    { id:7, title:'Shanti Path', sanskrit:'ॐ द्यौः शान्तिरन्तरिक्षं\nशान्तिः पृथिवी शान्तिः\nआपः शान्तिरोषधयः\nशान्तिः॥', transliteration:'Om Dyauh Shantir Antariksha Shantihi', meaning:'A Vedic peace chant invoking harmony in all planes of existence — the heavens, the space between, the earth, waters and all of nature.', category:'Vedic', audio:'' },
+    { id:8, title:'Tvameva Mata', sanskrit:'त्वमेव माता च पिता त्वमेव\nत्वमेव बन्धुश्च सखा त्वमेव\nत्वमेव विद्या द्रविणं त्वमेव\nत्वमेव सर्वं मम देव देव॥', transliteration:'Tvameva Mata Cha Pita Tvameva', meaning:'You alone are my mother and father, my relative and friend, my knowledge and my wealth. You are everything to me, O Lord of Lords.', category:'Devotional', audio:'' },
+  ];
+
+  audio = null;
+
+  componentDidMount() {
+    this.audio = new Audio();
+    this.audio.addEventListener('ended', () => this.setState({ isPlaying: false }));
+  }
+
+  componentWillUnmount() {
+    if (this.audio) { this.audio.pause(); this.audio.src = ''; }
+  }
+
+  playTrack = (track) => {
+    if (this.state.currentTrack && this.state.currentTrack.id === track.id) {
+      if (this.state.isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+      else {
+        if (track.audio) this.audio.play().catch(() => {});
+        this.setState({ isPlaying: true });
+      }
+    } else {
+      if (this.audio) { this.audio.pause(); this.audio.src = track.audio || ''; }
+      if (track.audio) this.audio.play().catch(() => {});
+      this.setState({ currentTrack: track, isPlaying: true, playerVisible: true });
+    }
+  };
+
+  togglePlay = () => {
+    const { currentTrack, isPlaying } = this.state;
+    if (!currentTrack) return;
+    if (isPlaying) { this.audio.pause(); this.setState({ isPlaying: false }); }
+    else {
+      if (this.audio && currentTrack.audio) this.audio.play().catch(() => {});
+      this.setState({ isPlaying: true });
+    }
+  };
+
+  closePlayer = () => {
+    if (this.audio) this.audio.pause();
+    this.setState({ playerVisible: false, isPlaying: false, currentTrack: null });
+  };
+
+  toggleSave = (id) => this.setState(s => ({ saved: { ...s.saved, [id]: !s.saved[id] } }));
+
+  renderVals() {
+    const { activeCategory, saved, isPlaying, currentTrack, playerVisible } = this.state;
+    const catColors = { Ganesh:'#e07a30', Vedic:'#5b8dd9', Morning:'#c9a45a', Guru:'#8060c0', Universal:'#5da070', Devotional:'#c44b88' };
+    const cats = ['All', ...Array.from(new Set(this.shlokaData.map(s => s.category)))];
+    const filtered = activeCategory === 'All' ? this.shlokaData : this.shlokaData.filter(s => s.category === activeCategory);
+    const sotd = this.shlokaData[0];
+
+    return {
+      categories: cats.map(c => {
+        const active = c === activeCategory;
+        const cc = catColors[c] || '#c9a45a';
+        return { label:c, onSelect: () => this.setState({ activeCategory:c }), style: { padding:'8px 20px', borderRadius:'100px', fontSize:'.78rem', cursor:'pointer', transition:'all .25s', border: active ? `1px solid ${cc}` : '1px solid rgba(15,19,53,.14)', background: active ? `${cc}18` : 'transparent', color: active ? cc : 'rgba(15,19,53,.5)', fontFamily:"'DM Sans',sans-serif" } };
+      }),
+      sectionTitle: activeCategory === 'All' ? 'All Shlokas' : `${activeCategory} Shlokas`,
+      countLabel: `${filtered.length} shlokas`,
+      shlokas: filtered.map(s => {
+        const cc = catColors[s.category] || '#9e7830';
+        const isSaved = !!saved[s.id];
+        return { ...s,
+          catStyle: { display:'inline-block', padding:'3px 12px', borderRadius:'100px', fontSize:'.63rem', fontWeight:'500', letterSpacing:'.12em', textTransform:'uppercase', background:`${cc}18`, color:cc, border:`1px solid ${cc}30` },
+          savedColor: isSaved ? '#c9a45a' : 'rgba(15,19,53,.22)',
+          savedFill: isSaved ? '#c9a45a' : 'none',
+          saveLabel: isSaved ? 'Unsave shloka' : 'Save shloka',
+          toggleSave: () => this.toggleSave(s.id),
+          play: () => this.playTrack({ ...s, title:s.title }),
+          share: () => {},
+        };
+      }),
+      sotdSanskrit: sotd.sanskrit,
+      sotdTranslit: sotd.transliteration,
+      sotdMeaning: sotd.meaning,
+      playSOTD: () => this.playTrack(sotd),
+
+      isPlaying, isNotPlaying: !isPlaying,
+      playerTitle: currentTrack ? currentTrack.title : '',
+      playerStyle: { position:'fixed', bottom:0, left:0, right:0, zIndex:200, height:'64px', background:'rgba(15,19,53,.97)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', borderTop:'1px solid rgba(201,164,90,.15)', transform: playerVisible ? 'translateY(0)' : 'translateY(100%)', transition:'transform .45s cubic-bezier(0.16,1,0.3,1)', display:'flex', alignItems:'center', padding:'0 clamp(16px,5vw,88px)', gap:'20px' },
+      togglePlay: this.togglePlay,
+      closePlayer: this.closePlayer,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

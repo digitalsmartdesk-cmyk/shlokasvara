@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#07091a;color:#f8f3ea;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#07091a;}
+::-webkit-scrollbar-thumb{background:rgba(201,164,90,.2);border-radius:2px;}
+@keyframes breatheGlow{0%{transform:scale(1);box-shadow:0 0 40px rgba(201,164,90,.12);}50%{transform:scale(1.28);box-shadow:0 0 80px rgba(201,164,90,.28);}100%{transform:scale(1);box-shadow:0 0 40px rgba(201,164,90,.12);}}
+@keyframes ringPulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.2;}50%{transform:translate(-50%,-50%) scale(1.6);opacity:.04;}100%{transform:translate(-50%,-50%) scale(1);opacity:.2;}}
+:root{--px:clamp(20px,5vw,88px);}
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;padding:0 var(--px);height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,7,20,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,164,90,.07);">
+  <a href="ShlokaSvara Home.dc.html" aria-label="ShlokaSvara Home" style="display:flex;align-items:center;">
+    <img src="uploads/ChatGPT Image Mar 21, 2026, 10_18_00 PM.png" alt="ShlokaSvara" style="height:44px;width:auto;object-fit:contain;">
+  </a>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="Listen.dc.html" style="font-size:.82rem;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Listen</a>
+    <a href="Shlokas.dc.html" style="font-size:.82rem;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Shlokas</a>
+    <a href="Mantras.dc.html" style="font-size:.82rem;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">Mantras</a>
+    <a href="About.dc.html" style="font-size:.82rem;color:rgba(248,243,234,.5);transition:color .2s;" style-hover="color:#c9a45a;">About</a>
+  </nav>
+  <a href="ShlokaSvara Home.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:.75rem;color:rgba(248,243,234,.35);transition:color .2s;" style-hover="color:#c9a45a;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Home
+  </a>
+</header>
+
+<main style="padding-top:72px;min-height:100vh;">
+
+<!-- HERO -->
+<section style="position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse 100% 70% at 50% 85%,rgba(80,40,140,.18),transparent 60%),linear-gradient(180deg,#050714 0%,#09091e 100%);">
+  <div aria-hidden="true" style="position:absolute;width:480px;height:480px;border-radius:50%;border:1px solid rgba(201,164,90,.06);top:50%;left:50%;animation:ringPulse 8s ease-in-out infinite;pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid rgba(201,164,90,.1);top:50%;left:50%;animation:ringPulse 8s ease-in-out .6s infinite;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;text-align:center;max-width:680px;padding:0 var(--px);">
+    <div aria-hidden="true" style="width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(201,164,90,.22),rgba(80,40,140,.08));border:1px solid rgba(201,164,90,.22);display:flex;align-items:center;justify-content:center;margin:0 auto 36px;animation:breatheGlow 8s ease-in-out infinite;">
+      <span style="font-family:'Noto Serif Devanagari',serif;font-size:2.2rem;color:rgba(201,164,90,.75);line-height:1;">ॐ</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;">
+      <div style="width:24px;height:1px;background:rgba(201,164,90,.4);"></div>
+      <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Meditation</span>
+      <div style="width:24px;height:1px;background:rgba(201,164,90,.4);"></div>
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5.5vw,4rem);font-weight:600;color:#f8f3ea;margin-bottom:18px;line-height:1.1;">Find Your<br><em style="color:#e8d4a4;">Stillness</em></h1>
+    <p style="font-size:1rem;color:rgba(248,243,234,.48);font-weight:300;line-height:1.85;max-width:460px;margin:0 auto 36px;">Guided meditations, breathing exercises and peaceful sonic environments rooted in ancient Vedic tradition.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <button onClick="{{ openBreathe }}" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#c9a45a,#9e7830);color:#07091a;border:none;padding:14px 32px;border-radius:100px;font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all .25s;" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,164,90,.38);">Breathe with Me</button>
+      <a href="#sessions" style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(201,164,90,.28);color:#c9a45a;padding:14px 28px;border-radius:100px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;" style-hover="border-color:rgba(201,164,90,.7);background:rgba(201,164,90,.06);">Explore Sessions</a>
+    </div>
+  </div>
+</section>
+
+<!-- BREATHE PANEL -->
+<section style="{{ breathePanelStyle }}">
+  <div style="max-width:520px;margin:0 auto;text-align:center;padding:0 var(--px);">
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;">
+      <div style="width:22px;height:1px;background:rgba(201,164,90,.35);"></div>
+      <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Box Breathing</span>
+      <div style="width:22px;height:1px;background:rgba(201,164,90,.35);"></div>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;color:#f8f3ea;margin-bottom:10px;">4-4-4-4 Practice</h2>
+    <p style="font-size:.85rem;color:rgba(248,243,234,.42);margin-bottom:44px;font-weight:300;">Inhale · Hold · Exhale · Hold — 4 seconds each. Follow the orb.</p>
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;margin:0 auto 40px;width:200px;height:200px;">
+      <div style="{{ breatheRingStyle }}"></div>
+      <div style="{{ breatheOrbStyle }}">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:rgba(201,164,90,.9);letter-spacing:.06em;text-transform:uppercase;">{{ breathePhase }}</span>
+        <span style="font-size:.78rem;color:rgba(201,164,90,.5);margin-top:4px;font-variant-numeric:tabular-nums;">{{ breatheCountStr }}</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-bottom:20px;">
+      <button onClick="{{ toggleBreathe }}" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,164,90,.1);border:1px solid rgba(201,164,90,.3);color:#c9a45a;padding:10px 24px;border-radius:100px;font-size:.75rem;letter-spacing:.08em;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="background:rgba(201,164,90,.2);border-color:#c9a45a;">{{ breatheActionLabel }}</button>
+      <button onClick="{{ resetBreathe }}" style="display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.1);color:rgba(248,243,234,.4);padding:10px 24px;border-radius:100px;font-size:.75rem;letter-spacing:.08em;font-family:'DM Sans',sans-serif;transition:all .2s;" style-hover="color:rgba(248,243,234,.8);border-color:rgba(255,255,255,.25);">Reset</button>
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;margin-bottom:10px;">
+      <sc-for list="{{ cycleDots }}" as="dot" hint-placeholder-count="5">
+        <div style="{{ dot.style }}"></div>
+      </sc-for>
+    </div>
+    <p style="font-size:.72rem;color:rgba(248,243,234,.22);">{{ cyclesLabel }}</p>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section id="sessions" style="max-width:1200px;margin:0 auto;padding:clamp(52px,7vh,80px) var(--px);">
+  <div style="margin-bottom:36px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <div style="width:22px;height:1px;background:rgba(201,164,90,.4);"></div>
+      <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Sessions</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:#f8f3ea;">Guided Meditation</h2>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;">
+    <sc-for list="{{ typeFilters }}" as="f" hint-placeholder-count="4">
+      <button onClick="{{ f.onSelect }}" style="{{ f.style }}">{{ f.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+    <sc-for list="{{ sessions }}" as="sess" hint-placeholder-count="6">
+      <div style="{{ sess.cardStyle }}" style-hover="transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.45);border-color:rgba(201,164,90,.22);">
+        <div style="padding:28px 26px 26px;display:flex;flex-direction:column;min-height:252px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span style="{{ sess.typeBadge }}">{{ sess.type }}</span>
+            <span style="font-size:.75rem;color:rgba(248,243,234,.3);">{{ sess.duration }}</span>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#f8f3ea;margin-bottom:8px;line-height:1.3;">{{ sess.title }}</h3>
+          <p style="font-size:.8rem;color:rgba(248,243,234,.4);line-height:1.7;flex:1;margin-bottom:22px;">{{ sess.description }}</p>
+          <button onClick="{{ sess.play }}" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,164,90,.1);border:1px solid rgba(201,164,90,.25);color:#c9a45a;padding:9px 20px;border-radius:100px;font-size:.74rem;letter-spacing:.07em;font-family:'DM Sans',sans-serif;transition:all .2s;align-self:flex-start;" style-hover="background:rgba(201,164,90,.2);border-color:#c9a45a;">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Begin
+          </button>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- AMBIENT SOUNDS -->
+<section style="background:#06081d;padding:clamp(52px,7vh,80px) var(--px);border-top:1px solid rgba(255,255,255,.04);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:36px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div style="width:22px;height:1px;background:rgba(201,164,90,.4);"></div>
+        <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Ambient</span>
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:#f8f3ea;">Sonic Environments</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:16px;">
+      <sc-for list="{{ ambients }}" as="amb" hint-placeholder-count="6">
+        <div onClick="{{ amb.toggle }}" style="{{ amb.cardStyle }}" style-hover="{{ amb.hoverStyle }}">
+          <div style="font-size:1.8rem;margin-bottom:12px;line-height:1;">{{ amb.emoji }}</div>
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#f8f3ea;margin-bottom:4px;">{{ amb.title }}</h4>
+          <p style="font-size:.74rem;color:rgba(248,243,234,.36);margin-bottom:16px;">{{ amb.subtitle }}</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:.62rem;color:{{ amb.stateColor }};letter-spacing:.1em;text-transform:uppercase;">{{ amb.stateLabel }}</span>
+            <div style="{{ amb.knobStyle }}">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE GUIDE -->
+<section style="background:#04060f;padding:clamp(56px,8vh,88px) var(--px);border-top:1px solid rgba(201,164,90,.06);">
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:22px;height:1px;background:rgba(201,164,90,.4);"></div>
+        <span style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a45a;">Practice</span>
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:#f8f3ea;line-height:1.15;margin-bottom:18px;">How to Begin<br><em>a Meditation</em></h2>
+      <p style="font-size:.9rem;color:rgba(248,243,234,.45);line-height:1.85;margin-bottom:32px;font-weight:300;">A few simple preparations deepen any meditation practice — whether you are sitting for five minutes or an hour.</p>
+      <a href="Mantras.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#c9a45a,#9e7830);color:#07091a;padding:12px 28px;border-radius:100px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,164,90,.35);">Explore Mantras</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <sc-for list="{{ guideSteps }}" as="step" hint-placeholder-count="4">
+        <div style="display:flex;align-items:flex-start;gap:18px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,164,90,.08);border:1px solid rgba(201,164,90,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <span style="font-size:.72rem;font-weight:500;color:#c9a45a;">{{ step.num }}</span>
+          </div>
+          <div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#f8f3ea;margin-bottom:5px;">{{ step.title }}</h4>
+            <p style="font-size:.82rem;color:rgba(248,243,234,.4);line-height:1.72;">{{ step.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- MINI PLAYER -->
+<div style="{{ playerStyle }}" aria-label="Player" role="complementary">
+  <div style="font-size:.82rem;color:#f8f3ea;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ playerTitle }}</div>
+  <div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">
+    <button onClick="{{ togglePlay }}" style="width:40px;height:40px;border-radius:50%;background:#c9a45a;border:none;color:#07091a;display:flex;align-items:center;justify-content:center;transition:all .2s;" style-hover="transform:scale(1.06);">
+      <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ false }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </sc-if>
+      <sc-if value="{{ isNotPlaying }}" hint-placeholder-val="{{ true }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      </sc-if>
+    </button>
+    <button onClick="{{ closePlayer }}" style="background:none;border:none;color:rgba(248,243,234,.35);display:flex;align-items:center;padding:6px;transition:color .2s;" style-hover="color:rgba(248,243,234,.8);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+</div>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    breatheOpen: false, breatheRunning: false,
+    breathePhase: 'Inhale', breatheCount: 4, breatheCycles: 0,
+    activeType: 'All', activeAmbients: {},
+    isPlaying: false, currentTrack: null, playerVisible: false,
+  };
+
+  sessionsData = [
+    { id:1, title:'Morning Awakening', type:'Guided', duration:'10 min', description:'Begin your day with gentle awareness, intention-setting and a short breath practice.' },
+    { id:2, title:'Deep Stillness', type:'Silent', duration:'20 min', description:'A pure silent sitting meditation with interval bells to guide your practice.' },
+    { id:3, title:'Yoga Nidra', type:'Guided', duration:'30 min', description:'A deeply restorative body-scan meditation for release, rest and inner peace.' },
+    { id:4, title:'Pranayama Flow', type:'Breathwork', duration:'15 min', description:'A guided breathing sequence combining Nadi Shodhana and Bhramari techniques.' },
+    { id:5, title:'Mantra Meditation', type:'Guided', duration:'20 min', description:'A seated mantra meditation with Om Namah Shivaya as the anchor for awareness.' },
+    { id:6, title:'Evening Release', type:'Guided', duration:'25 min', description:'Let the day dissolve. A gentle evening practice for rest, gratitude and surrender.' },
+  ];
+
+  ambientsData = [
+    { id:1, emoji:'🔔', title:'Temple Bells', subtitle:'Sacred resonance' },
+    { id:2, emoji:'🌊', title:'Ocean Waves', subtitle:'Rhythmic calm' },
+    { id:3, emoji:'🌧', title:'Rain on Leaves', subtitle:'Soft stillness' },
+    { id:4, emoji:'🪗', title:'Singing Bowls', subtitle:'Tibetan healing' },
+    { id:5, emoji:'🌬', title:'Forest Wind', subtitle:'Natural peace' },
+    { id:6, emoji:'✦', title:'Om Drone', subtitle:'Pure vibration' },
+  ];
+
+  guideStepsData = [
+    { num:'01', title:'Find a Still Place', desc:'Sit comfortably with your spine erect. Choose a quiet, dedicated space for your practice.' },
+    { num:'02', title:'Set an Intention', desc:'Before sitting, hold a clear intention in your heart — healing, peace, devotion or clarity.' },
+    { num:'03', title:'Breathe and Begin', desc:'Take three slow breaths. Begin your session, letting each moment flow naturally.' },
+    { num:'04', title:'108 Repetitions', desc:'For mantra practice, 108 repetitions completes one full cycle of the mantra japa.' },
+  ];
+
+  breatheTimer = null;
+  TOTAL_CYCLES = 5;
+
+  componentWillUnmount() {
+    clearTimeout(this.breatheTimer);
+  }
+
+  openBreathe = () => {
+    this.setState({ breatheOpen: true });
+    setTimeout(() => {
+      const el = document.getElementById('breathe-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
+
+  toggleBreathe = () => {
+    if (this.state.breatheRunning) {
+      clearTimeout(this.breatheTimer);
+      this.setState({ breatheRunning: false });
+    } else {
+      this.setState({ breatheRunning: true }, this.tickBreathe);
+    }
+  };
+
+  tickBreathe = () => {
+    if (!this.state.breatheRunning) return;
+    const phases = [{ name:'Inhale', secs:4 }, { name:'Hold', secs:4 }, { name:'Exhale', secs:4 }, { name:'Hold', secs:4 }];
+    this.breatheTimer = setTimeout(() => {
+      if (!this.state.breatheRunning) return;
+      this.setState(s => {
+        if (s.breatheCount > 1) return { breatheCount: s.breatheCount - 1 };
+        const idx = phases.findIndex(p => p.name === s.breathePhase);
+        const next = phases[(idx + 1) % phases.length];
+        const doneCycle = idx === phases.length - 1;
+        return { breathePhase: next.name, breatheCount: next.secs, breatheCycles: doneCycle ? s.breatheCycles + 1 : s.breatheCycles };
+      }, this.tickBreathe);
+    }, 1000);
+  };
+
+  resetBreathe = () => {
+    clearTimeout(this.breatheTimer);
+    this.setState({ breatheRunning: false, breathePhase:'Inhale', breatheCount:4, breatheCycles:0 });
+  };
+
+  toggleAmbient = (id) => this.setState(s => ({ activeAmbients: { ...s.activeAmbients, [id]: !s.activeAmbients[id] } }));
+  playTrack = (t) => this.setState({ currentTrack:t, isPlaying:true, playerVisible:true });
+  togglePlay = () => this.setState(s => ({ isPlaying: !s.isPlaying }));
+  closePlayer = () => this.setState({ playerVisible:false, isPlaying:false, currentTrack:null });
+
+  renderVals() {
+    const { breatheOpen, breatheRunning, breathePhase, breatheCount, breatheCycles, activeType, activeAmbients, isPlaying, currentTrack, playerVisible } = this.state;
+    const typeColors = { Guided:'#5b8dd9', Silent:'#8060c0', Breathwork:'#5da070' };
+    const orbScale = breathePhase === 'Inhale' ? 1.28 : breathePhase === 'Exhale' ? 0.78 : 1;
+
+    const filteredSessions = activeType === 'All' ? this.sessionsData : this.sessionsData.filter(s => s.type === activeType);
+
+    return {
+      openBreathe: this.openBreathe,
+
+      breathePanelStyle: { background:'linear-gradient(180deg,#08092a 0%,#07091a 100%)', padding:`clamp(56px,8vh,88px) 0`, borderTop:'1px solid rgba(201,164,90,.07)', display: breatheOpen ? 'block' : 'none' },
+      breathePhase,
+      breatheCountStr: `${breatheCount}`,
+      breatheActionLabel: breatheRunning ? 'Pause' : (breatheCycles === 0 && breatheCount === 4 && breathePhase === 'Inhale' ? 'Start' : 'Resume'),
+      breatheOrbStyle: { width:'160px', height:'160px', borderRadius:'50%', background:'radial-gradient(circle,rgba(201,164,90,.16),rgba(80,40,140,.05))', border:'1px solid rgba(201,164,90,.2)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', transition:'transform 4s ease', transform:`scale(${orbScale})` },
+      breatheRingStyle: { position:'absolute', inset:'-24px', borderRadius:'50%', border:'1px solid rgba(201,164,90,.08)', animation: breatheRunning ? 'ringPulse 8s ease-in-out infinite' : 'none', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:'210px', height:'210px' },
+      toggleBreathe: this.toggleBreathe,
+      resetBreathe: this.resetBreathe,
+      cycleDots: Array.from({ length: this.TOTAL_CYCLES }, (_, i) => ({ style: { width:'8px', height:'8px', borderRadius:'50%', background: i < breatheCycles ? '#c9a45a' : 'rgba(255,255,255,.1)', transition:'background .4s' } })),
+      cyclesLabel: `${breatheCycles} / ${this.TOTAL_CYCLES} cycles`,
+
+      typeFilters: ['All','Guided','Silent','Breathwork'].map(t => {
+        const active = t === activeType;
+        const cc = typeColors[t] || '#c9a45a';
+        return { label:t, onSelect: () => this.setState({ activeType:t }), style: { padding:'7px 18px', borderRadius:'100px', fontSize:'.75rem', cursor:'pointer', transition:'all .25s', border: active ? `1px solid ${cc}` : '1px solid rgba(255,255,255,.1)', background: active ? `${cc}18` : 'transparent', color: active ? cc : 'rgba(248,243,234,.45)', fontFamily:"'DM Sans',sans-serif" } };
+      }),
+
+      sessions: filteredSessions.map(s => {
+        const cc = typeColors[s.type] || '#c9a45a';
+        return { ...s,
+          cardStyle: { borderRadius:'20px', background:'rgba(255,255,255,.03)', border:'1px solid rgba(255,255,255,.07)', transition:'transform .3s ease,box-shadow .3s ease,border-color .3s ease', cursor:'pointer' },
+          typeBadge: { display:'inline-block', padding:'3px 12px', borderRadius:'100px', fontSize:'.63rem', fontWeight:'500', letterSpacing:'.1em', textTransform:'uppercase', background:`${cc}18`, color:cc, border:`1px solid ${cc}30` },
+          play: () => this.playTrack(s),
+        };
+      }),
+
+      ambients: this.ambientsData.map(a => {
+        const on = !!activeAmbients[a.id];
+        return { ...a,
+          cardStyle: { background: on ? 'rgba(201,164,90,.07)' : 'rgba(255,255,255,.03)', border: on ? '1px solid rgba(201,164,90,.28)' : '1px solid rgba(255,255,255,.07)', borderRadius:'16px', padding:'22px 20px', cursor:'pointer', transition:'all .25s' },
+          hoverStyle: 'border-color:rgba(201,164,90,.3)',
+          stateLabel: on ? 'Playing' : 'Tap to play',
+          stateColor: on ? '#c9a45a' : 'rgba(248,243,234,.28)',
+          knobStyle: { width:'28px', height:'28px', borderRadius:'50%', background: on ? '#c9a45a' : 'rgba(255,255,255,.08)', color: on ? '#07091a' : 'rgba(248,243,234,.4)', display:'flex', alignItems:'center', justifyContent:'center', transition:'all .25s' },
+          toggle: () => this.toggleAmbient(a.id),
+        };
+      }),
+
+      guideSteps: this.guideStepsData,
+
+      isPlaying, isNotPlaying: !isPlaying,
+      playerTitle: currentTrack ? currentTrack.title : '',
+      playerStyle: { position:'fixed', bottom:0, left:0, right:0, zIndex:200, height:'64px', background:'rgba(3,4,14,.97)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', borderTop:'1px solid rgba(201,164,90,.12)', transform: playerVisible ? 'translateY(0)' : 'translateY(100%)', transition:'transform .45s cubic-bezier(0.16,1,0.3,1)', display:'flex', alignItems:'center', padding:'0 clamp(16px,5vw,88px)', gap:'20px' },
+      togglePlay: this.togglePlay, closePlayer: this.closePlayer,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
