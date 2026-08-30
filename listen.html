@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listen | ShlokaSvara</title>
+<meta name="description" content="Browse the full ShlokaSvara catalog — devotional music, mantras, shlokas and bhajans — and build your own listening session.">
+<meta property="og:title" content="Listen | ShlokaSvara">
+<meta property="og:description" content="Browse the full ShlokaSvara catalog — devotional music, mantras, shlokas and bhajans.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo/shlokasvara-logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/inner.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="inner-header inner-header--dark">
+  <a href="index.html" class="inner-logo" aria-label="ShlokaSvara Home">
+    <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara">
+  </a>
+  <nav class="inner-nav" aria-label="Main navigation">
+    <a href="index.html#listen">Music</a>
+    <a href="shlokas.html">Shlokas</a>
+    <a href="mantras.html">Mantras</a>
+    <a href="meditation.html">Meditation</a>
+  </nav>
+  <a href="index.html" class="inner-home-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <span>Home</span>
+  </a>
+</header>
+
+<main class="inner-main" id="main">
+
+  <section class="listen-hero">
+    <div class="listen-hero-inner">
+      <div>
+        <div class="eyebrow-row">
+          <span class="line"></span>
+          <span class="label">Now Playing</span>
+        </div>
+        <h1 class="listen-now-title" id="nowTitle">ShlokaSvara</h1>
+        <p class="listen-now-meta" id="nowMeta">Select a track to begin your devotional journey</p>
+        <div class="listen-seek-wrap">
+          <div class="listen-seek-track" id="seekTrack">
+            <div class="listen-seek-fill" id="seekFill"></div>
+            <div class="listen-seek-thumb" id="seekThumb"></div>
+          </div>
+          <div class="listen-transport-row">
+            <span class="listen-time" id="curTime">0:00</span>
+            <div class="listen-transport">
+              <button type="button" class="listen-transport-btn" id="btnPrev" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+              </button>
+              <button type="button" class="listen-play-btn" id="btnPlay" aria-label="Play">
+                <svg id="iconPlay" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg id="iconPause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </button>
+              <button type="button" class="listen-transport-btn" id="btnNext" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+              </button>
+            </div>
+            <span class="listen-time" id="durTime">0:00</span>
+          </div>
+        </div>
+      </div>
+      <div class="listen-vinyl" id="vinyl">
+        <div class="listen-vinyl-inner">ॐ</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="listen-catalog">
+    <div class="listen-tabs-row" id="tabsRow"></div>
+    <div class="track-list" id="trackList"></div>
+  </section>
+
+  <section class="listen-collections">
+    <div class="listen-collections-inner">
+      <div class="eyebrow-row">
+        <span class="label">Collections</span>
+      </div>
+      <h2 class="section-title" style="margin:8px 0 36px;font-size:clamp(1.8rem,3.5vw,2.6rem);">Curated for You</h2>
+      <div class="listen-collections-grid" id="collectionsGrid"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/listen.js"></script>
+</body>
+</html>

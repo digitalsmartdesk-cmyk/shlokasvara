@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meditation | ShlokaSvara</title>
+<meta name="description" content="Guided meditations, breathing exercises and peaceful sonic environments rooted in ancient Vedic tradition.">
+<meta property="og:title" content="Meditation | ShlokaSvara">
+<meta property="og:description" content="Guided meditations, breathing exercises and peaceful sonic environments.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo/shlokasvara-logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/inner.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="inner-header inner-header--dark">
+  <a href="index.html" class="inner-logo" aria-label="ShlokaSvara Home">
+    <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara">
+  </a>
+  <nav class="inner-nav" aria-label="Main navigation">
+    <a href="listen.html">Listen</a>
+    <a href="shlokas.html">Shlokas</a>
+    <a href="mantras.html">Mantras</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a href="index.html" class="inner-home-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <span>Home</span>
+  </a>
+</header>
+
+<main class="inner-main" id="main">
+
+  <section class="meditation-hero">
+    <div class="meditation-ring r1" aria-hidden="true"></div>
+    <div class="meditation-ring r2" aria-hidden="true"></div>
+    <div class="meditation-hero-inner">
+      <div class="meditation-om-badge" aria-hidden="true">ॐ</div>
+      <div class="eyebrow-row center">
+        <span class="line"></span>
+        <span class="label">Meditation</span>
+        <span class="line"></span>
+      </div>
+      <h1>Find Your<br><em>Stillness</em></h1>
+      <p>Guided meditations, breathing exercises and peaceful sonic environments rooted in ancient Vedic tradition.</p>
+      <div class="meditation-hero-ctas">
+        <button type="button" class="btn btn-gold" id="openBreatheBtn">Breathe with Me</button>
+        <a href="#sessions" class="btn btn-outline" style="border-color:rgba(201,164,90,.28);color:var(--color-gold)">Explore Sessions</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="breathe-panel" id="breathe-section">
+    <div class="breathe-panel-inner">
+      <div class="eyebrow-row center">
+        <span class="line"></span>
+        <span class="label">Box Breathing</span>
+        <span class="line"></span>
+      </div>
+      <h2>4-4-4-4 Practice</h2>
+      <p>Inhale · Hold · Exhale · Hold — 4 seconds each. Follow the orb.</p>
+      <div class="breathe-orb-wrap">
+        <div class="breathe-ring" id="breatheRing"></div>
+        <div class="breathe-orb" id="breatheOrb">
+          <span class="breathe-orb-phase" id="breathePhase">Inhale</span>
+          <span class="breathe-orb-count" id="breatheCount">4</span>
+        </div>
+      </div>
+      <div class="breathe-actions">
+        <button type="button" class="breathe-btn breathe-btn-primary" id="breatheToggle">Start</button>
+        <button type="button" class="breathe-btn breathe-btn-secondary" id="breatheReset">Reset</button>
+      </div>
+      <div class="breathe-dots" id="breatheDots"></div>
+      <p class="breathe-cycles-label" id="breatheCyclesLabel">0 / 5 cycles</p>
+    </div>
+  </section>
+
+  <section id="sessions" class="sessions-section">
+    <div class="eyebrow-row">
+      <span class="line"></span>
+      <span class="label">Sessions</span>
+    </div>
+    <h2>Guided Meditation</h2>
+    <div class="sessions-filters" id="sessionFilters"></div>
+    <div class="sessions-grid" id="sessionsGrid"></div>
+  </section>
+
+  <section class="ambient-section">
+    <div class="ambient-section-inner">
+      <div class="eyebrow-row">
+        <span class="line"></span>
+        <span class="label">Ambient</span>
+      </div>
+      <h2>Sonic Environments</h2>
+      <div class="ambient-grid" id="ambientGrid" style="margin-top:36px"></div>
+    </div>
+  </section>
+
+  <section class="practice-section">
+    <div class="practice-section-inner">
+      <div>
+        <div class="eyebrow-row">
+          <span class="line"></span>
+          <span class="label">Practice</span>
+        </div>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:var(--color-ivory);line-height:1.15;margin-bottom:18px;">How to Begin<br><em>a Meditation</em></h2>
+        <p>A few simple preparations deepen any meditation practice — whether you are sitting for five minutes or an hour.</p>
+        <a href="mantras.html" class="btn btn-gold">Explore Mantras</a>
+      </div>
+      <div class="guide-steps" id="guideSteps"></div>
+    </div>
+  </section>
+
+  <div class="mini-player" id="miniPlayer" role="complementary" aria-label="Player">
+    <div class="mini-player-title" id="playerTitle"></div>
+    <div class="mini-player-controls">
+      <button type="button" class="mini-player-play" id="playerToggle" aria-label="Play">
+        <svg id="iconPlay" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <svg id="iconPause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+      <button type="button" class="mini-player-close" id="playerClose" aria-label="Close player">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="js/meditation.js"></script>
+</body>
+</html>

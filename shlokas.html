@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Shlokas | ShlokaSvara</title>
+<meta name="description" content="Timeless Sanskrit verses — their words, meanings and devotional sound, all in one place.">
+<meta property="og:title" content="Sacred Shlokas | ShlokaSvara">
+<meta property="og:description" content="Timeless Sanskrit verses — their words, meanings and devotional sound, all in one place.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo/shlokasvara-logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/inner.css">
+</head>
+<body class="page-light">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="inner-header inner-header--light">
+  <a href="index.html" class="inner-logo" aria-label="ShlokaSvara Home">
+    <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara">
+  </a>
+  <nav class="inner-nav" aria-label="Main navigation">
+    <a href="listen.html">Listen</a>
+    <a href="mantras.html">Mantras</a>
+    <a href="meditation.html">Meditation</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a href="index.html" class="inner-home-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <span>Home</span>
+  </a>
+</header>
+
+<main class="inner-main" id="main">
+
+  <section class="shlokas-hero on-light">
+    <div class="shlokas-hero-inner">
+      <div class="shlokas-om" aria-hidden="true">ॐ</div>
+      <div class="eyebrow-row center">
+        <span class="line"></span>
+        <span class="label">Sacred Verses</span>
+        <span class="line"></span>
+      </div>
+      <h1>Sacred Shlokas</h1>
+      <p>Timeless Sanskrit verses — their words, meanings and devotional sound, all in one place.</p>
+      <div class="pill-row" id="categoryRow"></div>
+    </div>
+  </section>
+
+  <section class="shlokas-catalog">
+    <div class="catalog-header-row">
+      <h2 id="sectionTitle">All Shlokas</h2>
+      <span class="catalog-count" id="countLabel"></span>
+    </div>
+    <div class="shlokas-grid-page" id="shlokaGrid"></div>
+  </section>
+
+  <section class="sotd-band">
+    <div class="sotd-band-inner">
+      <div class="sotd-band-marks" aria-hidden="true">✦ ✦ ✦</div>
+      <div class="eyebrow-row center">
+        <span class="line"></span>
+        <span class="label">Shloka of the Day</span>
+        <span class="line"></span>
+      </div>
+      <div class="sotd-band-sanskrit" id="sotdSanskrit"></div>
+      <div class="sotd-band-translit" id="sotdTranslit"></div>
+      <p class="sotd-band-meaning" id="sotdMeaning"></p>
+      <button type="button" class="btn btn-gold" id="sotdPlayBtn">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Listen to Today's Shloka
+      </button>
+    </div>
+  </section>
+
+  <div class="mini-player" id="miniPlayer" role="complementary" aria-label="Player">
+    <div class="mini-player-title" id="playerTitle"></div>
+    <div class="mini-player-controls">
+      <button type="button" class="mini-player-play" id="playerToggle" aria-label="Play">
+        <svg id="iconPlay" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <svg id="iconPause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+      <button type="button" class="mini-player-close" id="playerClose" aria-label="Close player">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="js/shlokas.js"></script>
+</body>
+</html>

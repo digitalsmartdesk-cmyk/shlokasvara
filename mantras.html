@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mantras for the Mind &amp; Soul | ShlokaSvara</title>
+<meta name="description" content="Sacred syllables charged with the energy of millennia. Each mantra a doorway into deeper awareness, devotion and peace.">
+<meta property="og:title" content="Mantras for the Mind & Soul | ShlokaSvara">
+<meta property="og:description" content="Sacred syllables charged with the energy of millennia — chant with ShlokaSvara.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo/shlokasvara-logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/inner.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="inner-header inner-header--dark">
+  <a href="index.html" class="inner-logo" aria-label="ShlokaSvara Home">
+    <img src="images/logo/shlokasvara-logo.png" alt="ShlokaSvara">
+  </a>
+  <nav class="inner-nav" aria-label="Main navigation">
+    <a href="listen.html">Listen</a>
+    <a href="shlokas.html">Shlokas</a>
+    <a href="meditation.html">Meditation</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a href="index.html" class="inner-home-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <span>Home</span>
+  </a>
+</header>
+
+<main class="inner-main" id="main">
+
+  <section class="mantras-hero">
+    <div class="mantras-hero-inner">
+      <div>
+        <div class="eyebrow-row">
+          <span class="line"></span>
+          <span class="label">Ancient Syllables</span>
+        </div>
+        <h1>Mantras for the<br><em>Mind &amp; Soul</em></h1>
+        <p>Sacred syllables charged with the energy of millennia. Each mantra a doorway into deeper awareness, devotion and peace.</p>
+        <div class="pill-row" id="deityRow"></div>
+      </div>
+      <div class="om-orb-wrap" aria-hidden="true">
+        <div class="om-ripple r1"></div>
+        <div class="om-ripple r2"></div>
+        <div class="om-orb">ॐ</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mantras-catalog">
+    <div class="catalog-header-row">
+      <h2 id="sectionTitle" style="color:var(--color-ivory)">All Mantras</h2>
+      <span class="catalog-count" style="color:rgba(248,243,234,.35)" id="countLabel"></span>
+    </div>
+    <div class="mantras-grid-page" id="mantraGrid"></div>
+  </section>
+
+  <section class="guide-band">
+    <div class="guide-band-inner">
+      <div>
+        <div class="eyebrow-row">
+          <span class="line"></span>
+          <span class="label">Practice</span>
+        </div>
+        <h2>How to Chant<br><em>a Mantra</em></h2>
+        <p>Mantra chanting is a sacred practice that works through vibration, intention, and repetition. Follow these simple guidelines to deepen your practice.</p>
+        <a href="meditation.html" class="btn btn-gold">Explore Meditation</a>
+      </div>
+      <div class="guide-steps" id="guideSteps"></div>
+    </div>
+  </section>
+
+  <div class="mini-player" id="miniPlayer" role="complementary" aria-label="Player">
+    <div class="mini-player-title" id="playerTitle"></div>
+    <div class="mini-player-controls">
+      <button type="button" class="mini-player-play" id="playerToggle" aria-label="Play">
+        <svg id="iconPlay" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <svg id="iconPause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+      <button type="button" class="mini-player-close" id="playerClose" aria-label="Close player">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="js/mantras.js"></script>
+</body>
+</html>
